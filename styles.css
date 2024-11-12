@@ -11,30 +11,50 @@ body {
 .header {
     font-size: 5dvh;
     text-align: center;
-    margin: 1dvw;
+    margin-left: 1dvw;
+    margin-right: 1dvw;
 }
 
 .team-info {
     display: flex;
-    justify-content: space-around;
-    width: 100dvw;
+    width: 95dvw;
 }
 
 .header-input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 2dvw;
 }
 
 .header-input p {
-    font-size: 3dvh;
+    font-size: 2dvh;
 }
 
 .header-input input {
     border-radius: 1dvh;
     height: 5dvh;
+    width:10dvw;
     border: none;
     padding-left: 1dvw;
+    font-size: larger;
+}
+
+.radio-text {
+    display: flex;
+    align-items: center;
+}
+
+.radio-text input {
+    height: 30px;
+    accent-color: #0E1A60;
+}
+
+.radio-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 
 .issue {
@@ -49,7 +69,7 @@ body {
 
 .issue input {
     border-radius: 1dvh;
-    height: 30dvh;
+    height: 20dvh;
     width: 75dvw;
     border: none;
 }

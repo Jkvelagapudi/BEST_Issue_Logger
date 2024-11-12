@@ -5,35 +5,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title> BEST Issue Logger </title>
+    <title>BEST Issue Logger</title>
 </head>
 
 <body>
     <div class="header">
         <!-- <img src="./assets/BEST_Logo.png"> -->
-        <p> State Championship Issue Form </p>
+        <p>State Championship Issue Form</p>
     </div>
 
     <div class="team-info">
         <div class="header-input">
-            <p> Team Number </p>
-            <input type="text" placeholder="Enter Team Number">
+            <p>Team Number</p>
+            <input type="text" id="team-number" placeholder="Enter Team Number">
         </div>
 
         <div class="header-input">
-            <p> Round Number </p>
-            <input type="text" placeholder="Enter Round Number">
+            <p>Round Number</p>
+            <input type="text" id="round-number" placeholder="Enter Round Number">
         </div>
-    </div>
+
+
+        <div class="header-input">
+            <p> Field Number </p>
+
+            <div class="radio-box">
+                <div class="radio-text">
+                    <input type="radio" name="Field" value="Field 1">
+                    <p> Field 1 </p>
+                </div>
+            
+            
+                <div class="radio-text">
+                    <input type="radio" name="Field" value="Field 2">
+                    <p> Field 2 </p>
+                </div>
+            
+            
+                <div class="radio-text">
+                    <input type="radio" name="Field" value="Field 3">
+                    <p> Field 3 </p>
+                </div>
+            </div>
+        </div>
+
+                    <!-- Radio input for issue type -->
+            <div class="header-input">
+                <p> Color </p>
+
+                <div class="radio-box">
+                    <div class="radio-text">
+                        <input type="radio" name="Color" value="Red">
+                        <p> Red </p>
+                    </div>
+
+                    <div class="radio-text">
+                        <input type="radio" name="Color" value="Yellow">
+                        <p> Yellow </p>
+                    </div>
+
+                    <div class="radio-text">
+                        <input type="radio" name="Color" value="Green">
+                        <p> Green </p>
+                    </div>
+                    
+                    <div class="radio-text">
+                        <input type="radio" name="Color" value="Blue">
+                        <p> Blue </p>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+
+
+
 
     <div class="issue">
-        <p> Issue </p>
-        <input type="text">
+        <p>Issue</p>
+        <input type="text" id="issue-description">
     </div>
 
-    <button type="button">
+    <button type="button" onclick="submitForm()">
         Submit Issue
-    </button> 
+    </button>
 
+    <script>
+        function submitForm() {
+            // Get form values
+            const teamNumber = document.getElementById('team-number').value;
+            const roundNumber = document.getElementById('round-number').value;
+            const issueDescription = document.getElementById('issue-description').value;
+
+            // Get selected radio values
+            const field = document.querySelector('input[name="Field"]:checked')?.value;
+            const color = document.querySelector('input[name="Color"]:checked')?.value;
+
+            // Log values to the console
+            console.log("Team Number:", teamNumber);
+            console.log("Round Number:", roundNumber);
+            console.log("Field:", field);
+            console.log("Color:", color);
+            console.log("Issue Description:", issueDescription);
+        }
+    </script>
 </body>
 </html>
