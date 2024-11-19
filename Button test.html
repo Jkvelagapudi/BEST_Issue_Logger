@@ -4,178 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add and Remove Button</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>BEST Issue Logger</title>
     <style>
         body {
             background-color: #83CBA7;
-            font-family: Arial, sans-serif;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 2px solid #333;
-            border-radius: 8px;
-            padding: 10px 20px;
-            width: 70%; 
-            max-width: 700px; 
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
         .header {
-            font-size: 30px;
+            font-size: 40px;
             text-align: center;
             margin-left: 1vw;
             margin-right: 1vw;
         }
 
-        .left-text {
+        .team-info {
             display: flex;
-            gap: 60px;
+            width: 95vw;
+            flex-wrap: wrap;
         }
 
-        .left-text span {
-            font-size: 20px;
-            color: #333;
-            text-align: center;
-        }
-
-        .right-buttons {
+        .header-input {
             display: flex;
-            gap: 50px;
+            flex-direction: column;
+            align-items: center;
+            margin: 1vw 2vw;
         }
 
-        .right-buttons button {
-            padding: 10px 25px;
+        .header-input p {
+            font-size: 16px;
+        }
+
+        .header-input input,
+        .header-input select {
+            border-radius: 10px;
+            height: 40px;
+            width: 15vw;
             border: none;
-            border-radius: 5px;
+            padding-left: 1vw;
+            font-size: 18px;
+        }
+
+        .issue {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .issue p {
+            font-size: 24px;
+        }
+
+        .issue input {
+            border-radius: 10px;
+            height: 150px;
+            width: 75vw;
+            border: none;
+            font-size: 18px;
+            padding-left: 10px;
+        }
+
+        .issue-button {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .issue-button input[type="submit"] {
+            padding: 6px 3vw;
+            background-color: #001e3e;
+            color: #ffffff;
+            font-size: 20px;
+            border-radius: 25px;
+            border: none;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .resolved-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .resolved-btn:hover {
-            background-color: #45a049;
-        }
-
-        .alert-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .alert-btn:hover {
-            background-color: #d32f2f;
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 
 <body>
     <div class="header">
-        <p>Issue Logs</p>
-    </div>
-    <!-- Original Container -->
-    <div class="button-container">
-        <!-- Left Text -->
-        <div class="left-text">
-            <span>Team<br>[num]</span>
-            <span>Round<br>[num]</span>
-        </div>
-
-        <!-- Right Buttons -->
-        <div class="right-buttons">
-            <a href="index (1).html">
-                <button class="alert-btn">Alert</button>
-            </a>
-            <a href="Resolvement.html">
-                <button class="resolved-btn">Resolved</button>
-                </a>
-        </div>
+        <p>State Championship Issue Form</p>
     </div>
 
-    <!-- Duplicate Container -->
-    <div class="button-container">
-        <!-- Left Text -->
-        <div class="left-text">
-            <span>Team<br>[num]</span>
-            <span>Round<br>[num]</span>
+    <form id="form">
+        <div class="team-info">
+            <div class="header-input">
+                <p>Team Number</p>
+                <input type="text" id="team-number" placeholder="Enter Team Number">
+            </div>
+
+            <div class="header-input">
+                <p>Round Number</p>
+                <input type="text" id="round-number" placeholder="Enter Round Number">
+            </div>
+
+            <div class="header-input">
+                <p>Field Number</p>
+                <select id="field-number">
+                    <option value="" disabled selected>Select Field</option>
+                    <option value="Field 1">Field 1</option>
+                    <option value="Field 2">Field 2</option>
+                    <option value="Field 3">Field 3</option>
+                </select>
+            </div>
+
+            <div class="header-input">
+                <p>Field Color</p>
+                <select id="color">
+                    <option value="" disabled selected>Select Color</option>
+                    <option value="Green">Green</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Red">Red</option>
+                </select>
+            </div>
         </div>
 
-        <!-- Right Buttons -->
-        <div class="right-buttons">
-            <a href="index (1).html">
-                <button class="alert-btn">Alert</button>
-            </a>
-            <a href="Resolvement.html">
-            <button class="resolved-btn">Resolved</button>
-            </a>
-        </div>
-    </div>
-     <!-- Duplicate Container -->
-     <div class="button-container">
-        <!-- Left Text -->
-        <div class="left-text">
-            <span>Team<br>[num]</span>
-            <span>Round<br>[num]</span>
+        <div class="issue">
+            <p>Issue</p>
+            <input type="text" id="issue-description" placeholder="Describe the issue">
         </div>
 
-        <!-- Right Buttons -->
-        <div class="right-buttons">
-            <a href="index (1).html">
-                <button class="alert-btn">Alert</button>
-            </a>
-            <a href="Resolvement.html">
-            <button class="resolved-btn">Resolved</button>
-            </a>
+        <div class="issue-button">
+            <input type="submit" id="button" value="Submit Issue">
         </div>
-    </div>
-     <!-- Duplicate Container -->
-     <div class="button-container">
-        <!-- Left Text -->
-        <div class="left-text">
-            <span>Team<br>[num]</span>
-            <span>Round<br>[num]</span>
-        </div>
+    </form>
 
-        <!-- Right Buttons -->
-        <div class="right-buttons">
-            <a href="index (1).html">
-                <button class="alert-btn">Alert</button>
-            </a>
-            <a href="Resolvement.html">
-            <button class="resolved-btn">Resolved</button>
-            </a>
-        </div>
-    </div>
-     <!-- Duplicate Container -->
-     <div class="button-container">
-        <!-- Left Text -->
-        <div class="left-text">
-            <span>Team<br>[num]</span>
-            <span>Round<br>[num]</span>
-        </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-        <!-- Right Buttons -->
-        <div class="right-buttons">
-            <a href="index (1).html">
-                <button class="alert-btn">Alert</button>
-            </a>
-            <a href="Resolvement.html">
-            <button class="resolved-btn">Resolved</button>
-            </a>
-        </div>
+    <script type="text/javascript">
+        // Initialize EmailJS
+        emailjs.init('vB2qOOz43YODePWAs'); 
+
+        // Attach an event listener to the form submission
+        document.getElementById('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Get form values
+            const teamNumber = document.getElementById('team-number').value;
+            const roundNumber = document.getElementById('round-number').value;
+            const issueDescription = document.getElementById('issue-description').value;
+            const field = document.getElementById('field-number').value;
+            const color = document.getElementById('color').value;
+
+            // Validate form inputs
+            if (!teamNumber || !roundNumber || !field || !color || !issueDescription) {
+                alert("Please fill out all fields before submitting.");
+                return;
+            }
+
+            // Create the email data
+            const emailData = {
+                team_number: teamNumber,
+                round_number: roundNumber,
+                issue_description: issueDescription,
+                field: field,
+                color: color
+            };
+
+            // Send the email via EmailJS
+            emailjs.send("service_i0e7zfh", "template_3fprwcf", emailData) 
+                .then(function (response) {
+                    console.log("Issue sent successfully:", response);
+                    alert("Issue submitted successfully!");
+                    // Redirect to another HTML page after email is sent
+                    window.location.href = "Button test.html";
+                })
+                .catch(function (error) {
+                    console.error("Error sending email:", error);
+                    alert("There was an issue sending the email. Please try again.");
+                });
+        });
+    </script>
+</body>
+</html>
+
     </div>
     
 </body>
