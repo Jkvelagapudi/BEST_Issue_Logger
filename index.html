@@ -10,104 +10,99 @@
 
 <body>
     <div class="header">
-        <!-- <img src="./assets/BEST_Logo.png"> -->
         <p>State Championship Issue Form</p>
     </div>
 
-    <div class="team-info">
-        <div class="header-input">
-            <p>Team Number</p>
-            <input type="text" id="team-number" placeholder="Enter Team Number">
-        </div>
-
-        <div class="header-input">
-            <p>Round Number</p>
-            <input type="text" id="round-number" placeholder="Enter Round Number">
-        </div>
-
-
-        <div class="header-input">
-            <p> Field Number </p>
-
-            <div class="radio-box">
-                <div class="radio-text">
-                    <input type="radio" name="Field" value="Field 1">
-                    <p> Field 1 </p>
-                </div>
-            
-            
-                <div class="radio-text">
-                    <input type="radio" name="Field" value="Field 2">
-                    <p> Field 2 </p>
-                </div>
-            
-            
-                <div class="radio-text">
-                    <input type="radio" name="Field" value="Field 3">
-                    <p> Field 3 </p>
-                </div>
-            </div>
-        </div>
-
-                    <!-- Radio input for issue type -->
+    <form id="form">
+        <div class="team-info">
             <div class="header-input">
-                <p> Color </p>
+                <p>Team Number</p>
+                <input type="text" id="team-number" placeholder="Enter Team Number">
+            </div>
 
-                <div class="radio-box">
-                    <div class="radio-text">
-                        <input type="radio" name="Color" value="Red">
-                        <p> Red </p>
-                    </div>
+            <div class="header-input">
+                <p>Round Number</p>
+                <input type="text" id="round-number" placeholder="Enter Round Number">
+            </div>
 
-                    <div class="radio-text">
-                        <input type="radio" name="Color" value="Yellow">
-                        <p> Yellow </p>
-                    </div>
+            <div class="header-input">
+                <p>Field Number</p>
+                <select id="field-number">
+                    <option value="" disabled selected>Select Field</option>
+                    <option value="Field 1">Field 1</option>
+                    <option value="Field 2">Field 2</option>
+                    <option value="Field 3">Field 3</option>
+                </select>
+            </div>
 
-                    <div class="radio-text">
-                        <input type="radio" name="Color" value="Green">
-                        <p> Green </p>
-                    </div>
-                    
-                    <div class="radio-text">
-                        <input type="radio" name="Color" value="Blue">
-                        <p> Blue </p>
-                    </div>
-                </div>
-                    
+            <div class="header-input">
+                <p>Field Color</p>
+                <select id="color">
+                    <option value="" disabled selected>Select Color</option>
+                    <option value="Green">Green</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Red">Red</option>
+                </select>
             </div>
         </div>
 
+        <div class="issue">
+            <p>Issue</p>
+            <input type="text" id="issue-description" placeholder="Describe the issue">
+        </div>
 
+        <div class="issue-button">
+            <input type="submit" id="button" value="Submit Issue">
+        </div>
+    </form>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <div class="issue">
-        <p>Issue</p>
-        <input type="text" id="issue-description">
-    </div>
+    <script type="text/javascript">
+        // Initialize EmailJS
+        emailjs.init('vB2qOOz43YODePWAs'); 
 
-    <button type="button" onclick="submitForm()">
-        Submit Issue
-    </button>
+        // Attach an event listener to the form submission
+        document.getElementById('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
 
-    <script>
-        function submitForm() {
             // Get form values
             const teamNumber = document.getElementById('team-number').value;
             const roundNumber = document.getElementById('round-number').value;
             const issueDescription = document.getElementById('issue-description').value;
+            const field = document.getElementById('field-number').value;
+            const color = document.getElementById('color').value;
 
-            // Get selected radio values
-            const field = document.querySelector('input[name="Field"]:checked')?.value;
-            const color = document.querySelector('input[name="Color"]:checked')?.value;
+            // Validate form inputs
+            if (!teamNumber || !roundNumber || !field || !color || !issueDescription) {
+                alert("Please fill out all fields before submitting.");
+                return;
+            }
 
-            // Log values to the console
-            console.log("Team Number:", teamNumber);
-            console.log("Round Number:", roundNumber);
-            console.log("Field:", field);
-            console.log("Color:", color);
-            console.log("Issue Description:", issueDescription);
-        }
+            // Create the email data
+            const emailData = {
+                team_number: teamNumber,
+                round_number: roundNumber,
+                issue_description: issueDescription,
+                field: field,
+                color: color
+            };
+
+            // Send the email via EmailJS
+            emailjs.send("service_i0e7zfh", "template_3fprwcf", emailData) 
+                .then(function (response) {
+                    console.log("Issue sent successfully:", response);
+                    alert("Issue submitted successfully!");
+                    // Redirect to another HTML page after email is sent
+                    window.location.href = "Button test.html";
+                })
+                .catch(function (error) {
+                    console.error("Error sending email:", error);
+                    alert("There was an issue sending the email. Please try again.");
+                });
+        });
     </script>
 </body>
 </html>
+
